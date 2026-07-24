@@ -87,7 +87,7 @@ export default function TabInventario({ empresa, logo, direccion, telefono }) {
 
   return (
     <div className="space-y-5">
-      <div className="flex flex-wrap items-end justify-between gap-3">
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-3">
         <div className="flex flex-wrap items-end gap-3">
           <FiltroFechas desde={desde} hasta={hasta} setDesde={setDesde} setHasta={setHasta}
             onBuscar={() => setParams({ desde, hasta })} cargando={isLoading} />
@@ -112,12 +112,12 @@ export default function TabInventario({ empresa, logo, direccion, telefono }) {
           )}
         </div>
         <button onClick={exportar} disabled={!filtrado.length}
-          className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-medium transition-colors disabled:opacity-40">
+          className="flex items-center justify-center gap-2 px-4 py-2 w-full sm:w-auto bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-sm font-medium transition-colors disabled:opacity-40">
           <Download className="w-4 h-4" /> Exportar PDF
         </button>
       </div>
 
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
         <StatCard label="Total movimientos"   valor={stats.total}    color="violet"  Icono={Package}        idx={0} />
         <StatCard label="Unidades ingresadas" valor={stats.entradas} color="emerald" Icono={ArrowUpCircle}  idx={1} />
         <StatCard label="Unidades egresadas"  valor={stats.salidas}  color="rose"    Icono={ArrowDownCircle} idx={2} />
