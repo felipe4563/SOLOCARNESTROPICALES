@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 24-07-2026 a las 14:22:24
+-- Tiempo de generación: 24-07-2026 a las 15:30:59
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -49,6 +49,13 @@ CREATE TABLE `cajas` (
   `creado_en` timestamp NULL DEFAULT current_timestamp(),
   `actualizado_en` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Volcado de datos para la tabla `cajas`
+--
+
+INSERT INTO `cajas` (`id`, `sucursal_id`, `nombre`, `activo`, `creado_en`, `actualizado_en`) VALUES
+(1, 1, 'Caja 1', 1, '2026-07-24 12:23:54', '2026-07-24 12:23:54');
 
 -- --------------------------------------------------------
 
@@ -611,6 +618,13 @@ CREATE TABLE `sucursales` (
   `actualizado_en` timestamp NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `sucursales`
+--
+
+INSERT INTO `sucursales` (`id`, `nombre`, `direccion`, `telefono`, `activo`, `creado_en`, `actualizado_en`) VALUES
+(1, 'Ivigarzama', '', '', 1, '2026-07-24 12:23:40', '2026-07-24 12:23:40');
+
 -- --------------------------------------------------------
 
 --
@@ -635,10 +649,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`id`, `rol_id`, `acceso_todas_sucursales`, `nombre`, `email`, `contrasena`, `activo`, `token_recordar`, `creado_en`, `actualizado_en`) VALUES
-(1, 1, 1, 'Administrador', 'admin@solocarnes.com', '$2b$10$tvvijjWvfNhTOXiCbqrmQ.dSrVOBvmNn8hVmLM.hiAiYMTePWEVmK', 1, NULL, '2026-07-01 00:23:31', '2026-07-24 12:22:16'),
-(2, 1, 0, 'melani', 'melani@restaurante.com', '$2b$10$wQXio/zOEApUdrCbI9dhuu1XFCGYavYt0toUiLR9q84vRX.tURNSe', 1, NULL, '2026-07-11 14:17:11', '2026-07-15 04:16:15'),
-(3, 2, 0, 'Elian', 'Elian@salybrasas.com', '$2b$10$dJF.2QdvGhZ0XCUMWkYpp.mybqYvXmcxCCdJV39cWeLjlohGnOT32', 1, NULL, '2026-07-15 04:13:43', '2026-07-15 04:14:09'),
-(4, 2, 0, 'Expo', 'expo@salybrasas.com', '$2b$10$jh9jyJuFs7m8t44.4TuxVeaU6dVlUGI975LdDq/cv2gBb8K5m9C0m', 1, NULL, '2026-07-15 16:49:01', '2026-07-15 16:49:27');
+(1, 1, 1, 'Administrador', 'admin@solocarnes.com', '$2b$10$tvvijjWvfNhTOXiCbqrmQ.dSrVOBvmNn8hVmLM.hiAiYMTePWEVmK', 1, NULL, '2026-07-01 00:23:31', '2026-07-24 12:22:16');
 
 -- --------------------------------------------------------
 
@@ -887,7 +898,7 @@ ALTER TABLE `areas`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `categorias`
@@ -1025,7 +1036,7 @@ ALTER TABLE `sesiones_caja`
 -- AUTO_INCREMENT de la tabla `sucursales`
 --
 ALTER TABLE `sucursales`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
