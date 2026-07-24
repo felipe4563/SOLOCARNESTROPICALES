@@ -19,7 +19,7 @@ que sirve de plantilla exacta a adaptar.
 - **Frontend**: build estático de Vite (`frontend/dist`), servido directamente por nginx
   nativo del host (`root` apuntando a esa carpeta), sin proceso propio.
 - **Base de datos**: MariaDB nativo del VPS (mismo servidor que usa salybrasas, instancia
-  compartida, bases de datos separadas). Nueva base `scarnestropicales_db` y usuario
+  compartida, bases de datos separadas). Nueva base `bd_scarnestropicales` y usuario
   dedicado `scarnestropicales_user` con contraseña fuerte generada — no root, no vacía
   como en desarrollo. Se importa `bd/bd_solocarnestropicales.sql` (estructura completa +
   seed de `roles`, `permisos`, `usuarios` ya con hashes bcrypt reales).
@@ -40,7 +40,7 @@ que sirve de plantilla exacta a adaptar.
 
 `backend/.env` en el VPS (no se versiona, se crea manualmente ahí, igual que hoy):
 - `PORT=3008`
-- `DB_HOST=localhost`, `DB_NAME=scarnestropicales_db`, `DB_USER=scarnestropicales_user`,
+- `DB_HOST=localhost`, `DB_NAME=bd_scarnestropicales`, `DB_USER=scarnestropicales_user`,
   `DB_PASS=<generada>`
 - `JWT_SECRET`, `JWT_REFRESH_SECRET` — 64 chars aleatorios (`openssl rand -hex 32`),
   distintos entre sí y de los de desarrollo (actualmente `secretas`/`secretas_refresh`,

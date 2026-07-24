@@ -294,7 +294,7 @@ git commit -m "deploy: adaptar deploy.sh a scarnestropicales"
 PORT=3008
 DB_HOST=localhost
 DB_PORT=3306
-DB_NAME=scarnestropicales_db
+DB_NAME=bd_scarnestropicales
 DB_USER=scarnestropicales_user
 DB_PASS=CAMBIA_ESTA_PASSWORD_FUERTE
 JWT_SECRET=CAMBIA_ESTO_POR_64_CHARS_ALEATORIOS
@@ -361,7 +361,7 @@ git commit -m "deploy: apuntar VITE_API_URL a scarnestropicales"
 - Create: `deploy/SETUP-VPS.md`
 
 **Interfaces:**
-- Consumes: nombres/puertos definidos en Tasks 2–6 (`scarnestropicales_db`, `scarnestropicales_user`, puerto 3008, ruta `/home/ubuntu/SISTEMAS/SOLOCARNESTROPICAL`).
+- Consumes: nombres/puertos definidos en Tasks 2–6 (`bd_scarnestropicales`, `scarnestropicales_user`, puerto 3008, ruta `/home/ubuntu/SISTEMAS/SOLOCARNESTROPICAL`).
 - Produces: guía de referencia para el despliegue inicial (una sola vez); las actualizaciones posteriores usan `deploy/deploy.sh` (Task 4).
 
 - [ ] **Step 1: Crear el archivo con los pasos completos**
@@ -386,9 +386,9 @@ sudo mysql -u root -p
 \`\`\`
 
 \`\`\`sql
-CREATE DATABASE scarnestropicales_db CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE bd_scarnestropicales CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 CREATE USER 'scarnestropicales_user'@'localhost' IDENTIFIED BY 'REEMPLAZA_CON_PASSWORD_FUERTE';
-GRANT ALL PRIVILEGES ON scarnestropicales_db.* TO 'scarnestropicales_user'@'localhost';
+GRANT ALL PRIVILEGES ON bd_scarnestropicales.* TO 'scarnestropicales_user'@'localhost';
 FLUSH PRIVILEGES;
 EXIT;
 \`\`\`
@@ -396,7 +396,7 @@ EXIT;
 Importar la estructura + seed (roles, permisos, usuario admin):
 
 \`\`\`bash
-mysql -u scarnestropicales_user -p scarnestropicales_db < bd/bd_solocarnestropicales.sql
+mysql -u scarnestropicales_user -p bd_scarnestropicales < bd/bd_solocarnestropicales.sql
 \`\`\`
 
 ## 3. Generar secretos y crear `backend/.env`
