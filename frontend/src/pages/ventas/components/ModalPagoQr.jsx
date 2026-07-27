@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import { consultarEstadoPagoQr, cancelarPagoQr } from '../../../api/pagosQr';
+import { reimprimirVenta } from '../../../api/ventas';
+import { imprimirLocal } from '../../../utils/impresionLocal';
 import Modal from '../../../components/ui/Modal';
 
 export default function ModalPagoQr({ pedidoId, pagoQr, onClose, onCompletado, onReintentar }) {
@@ -39,6 +41,10 @@ export default function ModalPagoQr({ pedidoId, pagoQr, onClose, onCompletado, o
 
   useEffect(() => {
     if (estado === 'completado' && estadoQuery.data?.pedido) {
+      reimprimirVenta(estadoQuery.data.pedido.id).then(imprimirLocal).catch(() => {
+        // Sin agente local en esta PC: no pasa nada, el socket.io del backend
+        // ya mandó el mismo ticket como respaldo (ver _emitirImpresion).
+      });
       onCompletado(estadoQuery.data.pedido);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
